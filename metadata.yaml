@@ -1,0 +1,36 @@
+_repo: The-Wind-in-the-Rose-Bush-and-Other-Stories-of-the-Supernatural_1617
+_version: 0.0.1
+creator:
+  author:
+    agent_name: Freeman, Mary Eleanor Wilkins
+    aliases:
+    - Wilkins, Mary Ella
+    - Freeman, Mary E. Wilkins (Mary Eleanor Wilkins)
+    - Wilkins, Mary E. (Mary Eleanor)
+    - Wilkins, Mary Eleanor
+    birthdate: 1852
+    deathdate: 1930
+    gutenberg_agent_id: '495'
+    url: http://www.gutenberg.org/2009/agents/495
+    wikipedia: http://en.wikipedia.org/wiki/Mary_Eleanor_Wilkins_Freeman
+description: The wind in the rose-bush; The shadows on the wall; Luella Miller; The
+  southwest chamber; The vacant lot; The lost ghost.
+gutenberg_issued: '1999-01-01'
+gutenberg_type: Text
+identifiers:
+  gutenberg: '1617'
+language: en
+publisher: Project Gutenberg
+rights: Public domain in the USA.
+rights_url: http://creativecommons.org/about/pdm
+subjects:
+- !lcsh 'New England -- Fiction'
+- !lcc 'PS'
+- !lcsh 'Ghost stories, American'
+- !lcsh 'Short stories, American'
+- !lcsh 'Paranormal fiction, American'
+- GITenberg
+tableOfContents: The wind in the rose bush -- The shadows on the wall -- Luella Miller
+  -- The southwest chamber -- The vacant lot -- The lost ghost.
+title: The Wind in the Rose-Bush, and Other Stories of the Supernatural
+url: http://www.gutenberg.org/ebooks/1617
