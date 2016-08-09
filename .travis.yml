@@ -1,0 +1,61 @@
+sudo: required
+dist: trusty
+language: ruby
+
+before_install:
+before_install:
+- gem install asciidoctor -v 1.5.2
+- gem install tilt
+- sudo pip install git+https://github.com/gitenberg-dev/gitberg
+- sudo pip install pillow
+- sudo pip install cssutils
+- sudo pip install docutils
+- sudo pip install roman
+- sudo pip install git+https://github.com/gitenberg-dev/pg-epubmaker
+script:
+- VERSION=`ruby -e "require 'yaml'; meta = YAML.load_file('metadata.yaml'); puts meta['_version'];"`
+- git clone https://github.com/gitenberg-dev/asciidoctor-htmlbook.git
+- sudo pip install -r asciidoctor-htmlbook/gitberg-machine/requirements.txt
+
+- /usr/bin/python -c "from gitenberg import travis; travis.build_epub()"
+- ebook-convert book.epub book.mobi
+- xvfb-run ebook-convert book.epub book.pdf
+branches:
+  only:
+  - master
+notifications:
+  webhooks:
+    urls:
+      - https://unglue.it/api/travisci/webhook
+    on_success: always
+    on_failure: never
+    on_start: never
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: Aw1h1QXe8PTY3mm1pynnIZQ96RkbKm0x1X4LCgrU44aqAxrMD4+3vxvxPslqFEygFJAgW0Z5emQArEyMj1WY4abCsRdiiclVcir7VUTUQycd6KWKlW0KqMYkUysO/GHrl65g3kUx44zwGAKVl18qDhse5vnlWXf7BbJcDzhBor6Lv7zblkLWSxYZQc/i2KNMw+pTPttH9M1K01g+YvkELLx9mAuTrSEZACX15s/pIYNab63V86beEr6wlGtdyJDXbfLs/KpngZaoGDiI7Ec5KkPDEPA22qwUrSbUMMv8S5T0mwfCe2rHHAkeQDO4oZudrjRJyuSPOVxLJz/AWW/DMZrXKva1MbnNvAPzEtrTA1Xvobkrk2aq+tsYyJ4rhLpBB+AAsxl6HfxTZD0su5VMBcoSWrU9pZ5cWI15TuXgvaiwVN4tVR1iGPOuIHd7AQtgimMjiwvmzF111k9yJgzpNJEQqYeU5rBDtWG/TwC7ZuaesOJP6EuT4iovKFHq6PsnygxOj3KJzte4IYI3ZRFT9yd2s2Fv0MRIQ75tPZLbMIv4EBYV0bDJsY3YgfGP/Bt9gvhfcdgu0Jg+OGRzTOxgKkssCD8L7g0H6uw5awuCRq8Zb7N7AJWQLQwK03jefeGubZTsfAMCN74kEjkrxJay3XhF2dnsDwc0r2rC89LTd8U=
+  file:
+    - book.epub
+    - book.mobi
+    - book.pdf
+  "on":
+    repo: GITenberg/The-Wind-in-the-Rose-Bush-and-Other-Stories-of-the-Supernatural_1617
+addons:
+  apt:
+    packages:
+    - xsltproc
+    - xvfb
+    - calibre
+    - python-pip
+    - git
+    - python-dev
+    - libjpeg-dev
+    - libpng-dev
+    - libfreetype6
+    - libfreetype6-dev
+    - zlib1g-dev
+    - python-lxml
+    - libxml2-dev
+    - libxslt1-dev
+    - tidy
